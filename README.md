@@ -1,6 +1,5 @@
-<div>
-        <img class="img-bg" src="pobrane.png" alt="">
-    </div>
+<h1 align="center">
+  <img title="Netflix" src="pobrane.png" alt="NETFLIX Logo" width="400" />
 
 
 # Daflix - uproszczony serwis steramingowy
