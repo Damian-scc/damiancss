@@ -1,0 +1,495 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+/* Zmienne kolorów i czcionek */
+:root { 
+    --primary-color: #e50058;
+    --secondary-color: #333;
+    --light-bg: #f4f4f4;
+    --dark-bg: #222;
+    --text-color: #555;
+    --font-family: 'Roboto', sans-serif;
+}
+
+body {
+   font-family: var(--font-family); /* Użycie zmiennej czcionki */
+   line-height: 1.6; /* Lepsza czytelność */
+   color: var(--text-color); /* Użycie zmiennej koloru tekstu */
+   background-color: #fff; /* Jasne tło dla kontrastu */
+}
+
+/* Nagłówek */
+.container {
+    max-width: 1200px; /* Szerokość kontenera */
+    margin: 0 auto; /* Wyśrodkowanie */
+    padding: 0 20px; /* Padding po bokach */
+}
+
+.section-padding { /* Klasa do ogólnego odstępu sekcji */
+    padding: 80px 0;
+}
+
+h1, h2, h3 { /* Style nagłówków */
+    color: var(--secondary-color);
+    margin-bottom: 20px; /* Odstęp poniżej nagłówków */
+    font-weight: 700; /* Pogrubienie nagłówków */
+}
+
+h2 { /* Specjalny styl dla h2 */
+    text-align: center; /* Wyśrodkowanie */
+    margin-bottom: 50px; /* Większy odstęp poniżej */
+    font-size: 2.2rem; /* Większy rozmiar czcionki */
+}
+
+a { /* Style linków */
+    text-decoration: none; /* Usunięcie podkreślenia */
+    color: var(--primary-color);
+}
+
+header { /* Nagłówek strony */
+    background: #fff;
+    border-radius: 1px  solid #eee; /* Delikatny cień */
+    padding: 15px 0; /* Padding wewnętrzny */
+    position: sticky; /* Przyklejony nagłówek */
+    top: 0; /* Przyklejony do góry */
+    z-index: 1000; /* Nad innymi elementami */
+}
+
+.header-content { /* Zawartość nagłówka */
+    display: flex;
+    justify-content: space-between; /* Rozłożenie elementów */
+    align-items: center;
+}
+
+.logo a { /* Logo */
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--secondary-color);
+    font-weight: 500;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* --- PRZYCISK CTA --- */
+.cta-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 15px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #c9004d; /* Ciemniejszy róż */
+}
+
+/* --- SEKCJA HERO --- */
+
+    @keyframes moving-gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Animowany gradient tła */
+.hero-section {
+    background: linear-gradient(
+        -45deg,
+        #e50058, /* Twój różowy TEB */
+        #ff5e7b,/* Jaśniejszy róż */
+        #8200ff, /* Fioletowy */
+        #e50058  /* powrót do różowego TEB */
+    );
+
+    /* Ustawienie rozmiaru tła wiekszego niz element */
+    background-size: 400% 400%;
+
+    /* zastosowanie animacji */
+    animation: moving-gradient 15s ease infinite; /* 15 sekund, płynna, nieskończona */
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+
+    /* czytelny tekst na tle gradientu */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content h1 { /* Nagłówek w sekcji hero */
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.hero-content p { /* Podtytuł w sekcji hero */
+    font-size: 1.3em; /* Nieco większy rozmiar czcionki */
+    margin-bottom: 40px; /* Większy odstęp poniżej */
+    color: #f0f0f0;
+}
+
+.hero-form { /* Formularz w sekcji hero */
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Odstęp między elementami */
+    margin-bottom: 40px;
+}
+
+.hero-form select, .hero-form button { /* Style dla select i button w formularzu */
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 15px; /* Zaokrąglone rogi */
+    border: none;
+}
+
+.hero-form select { /* Styl dla select */
+    width: 200px;
+    border: 1px solid #ccc;
+    color: var(--secondary-color);
+}
+
+.hero-features { /* Cechy w sekcji hero */
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 1.1em;
+}
+
+.hero-features span { /* Pojedyncza cecha */
+    display: flex;
+    align-items: center;
+}
+
+.icon-check {
+    /* To wymaga dodania ikonek, np. z FontAwesome! Na razie tylko placeholder */
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: #00ff00; 
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* --- SEKCJA OFERTA --- */
+.offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.offer-card { /* Pojedyncza oferta */
+    background: var(--light-bg);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.offer-card:hover { /* Efekt hover na ofercie */
+    transform: translateY(-5px);
+}
+
+.offer-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.offer-card a { /* Link w ofercie */
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: 700;
+    padding: 5px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 13px;
+}
+
+/* --- SEKCJA O NAS --- */
+.onas-section {
+    background-color: var(--light-bg);
+    text-align: center;
+}
+
+.onas-grid { /* Siatka punktów o nas */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.onas-point {
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+}
+
+.onas-point i {
+    /* Placeholder dla ikon */
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 15px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.onas-point h3 {
+    margin-bottom: 5px;
+}
+
+/* --- STOPKA --- */
+footer {
+    background-color: var(--dark-bg);
+    color: #ccc;
+    padding-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #444;
+}
+
+.footer-col {
+    flex-basis: 25%;
+}
+
+.footer-col h4 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.footer-col a {
+    color: #ccc;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9em;
+}
+
+/* --- RESPONSIVE (DLA TELEFONÓW) --- */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+    nav ul {
+        margin: 15px 0;
+        justify-content: center;
+    }
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-form {
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto 30px;
+    }
+    .hero-features {
+        flex-direction: column;
+    }
+    .onas-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .footer-col {
+        flex-basis: 100%;
+        text-align: center;
+    }
+}
+
+/* --- STYLE OGÓLNE DLA PODSTRON --- */
+.page-title {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.lead-text {
+    text-align: center;
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+/* --- O NAS --- */
+.mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.mission-card {
+    text-align: center;
+    padding: 30px;
+    background: var(--light-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.mission-card i {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* --- BLOG --- */
+.blog-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.blog-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+
+.blog-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-card h4 {
+    padding: 15px 15px 5px;
+    font-size: 1.2em;
+}
+
+.blog-card p.meta {
+    font-size: 0.8em;
+    color: #999;
+    padding: 0 15px;
+}
+
+.blog-card p {
+    padding: 10px 15px 15px;
+}
+
+.read-more {
+    display: block;
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    margin-top: auto; /* Ustawia na dole kafelki */
+}
+
+/* --- KONTAKT --- */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.contact-info i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.contact-form input, .contact-form textarea, .contact-info select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #e0e0e0;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #555;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
+/* Responsywność dla kontakt i blog */
+@media (max-width: 900px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- STYLE DLA BREADCRUMBS --- */
+.breadcrumbs {
+    background-color: var(--light-bg);
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.breadcrumbs a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary-color);
+}
+
+.breadcrumbs span {
+    margin: 0 10px;
+    color: #aaa;
+}
+.application-form select, .application-form input, .application-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.logo img {
+    height: 60px; /* Logo będzie mniejsze */
+    width: auto;
+
+}

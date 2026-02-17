@@ -1,0 +1,30 @@
+function obliczPole() {
+    let a = parseFloat(document.getElementById("a").value);
+    let b = parseFloat(document.getElementById("b").value);
+    let c = parseFloat(document.getElementById("c").value);
+
+    let wynik = document.getElementById("wynik");
+
+    // sprawdzanie poprawności danych
+    if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        wynik.innerHTML = "Wpisz trzy liczby!";
+        return;
+    }
+
+    if (a <= 0 || b <= 0 || c <= 0) {
+        wynik.innerHTML = "Boki muszą być większe niż 0!";
+        return;
+    }
+
+    // warunek trójkąta
+    if (a + b <= c || a + c <= b || b + c <= a) {
+        wynik.innerHTML = "Z podanych boków nie sposób utworzyć trójkąta!";
+        return;
+    }
+
+    // wzór Herona
+    let p = (a + b + c) / 2;
+    let pole = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+
+    wynik.innerHTML = "Pole trójkąta = " + pole.toFixed(2);
+}

@@ -1,0 +1,400 @@
+diff --git a//Users/i.damian/Desktop/moj-projekt/fakebook/index.html b//Users/i.damian/Desktop/moj-projekt/fakebook/index.html
+new file mode 100644
+--- /dev/null
++++ b//Users/i.damian/Desktop/moj-projekt/fakebook/index.html
+@@ -0,0 +1,395 @@
++<!doctype html>
++<html lang="en">
++  <head>
++    <meta charset="utf-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1" />
++    <title>FakeBook - Demo</title>
++    <link rel="stylesheet" href="style.css" />
++    <script src="app.js" defer></script>
++  </head>
++  <body>
++    <header class="topbar">
++      <a class="logo" href="#home" data-page="home" aria-label="FakeBook Home">
++        <span class="logo__mark" aria-hidden="true">F</span>
++        <span class="logo__text">FakeBook</span>
++      </a>
++
++      <nav class="nav" aria-label="Primary">
++        <button class="nav__item is-active" type="button" data-page="home">
++          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true">
++            <path
++              d="M3 10.6 12 3l9 7.6V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.4Z"
++              fill="currentColor"
++            />
++          </svg>
++          <span class="nav__label">Home</span>
++        </button>
++
++        <button class="nav__item" type="button" data-page="rolls">
++          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true">
++            <path
++              d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Zm3 6.5v5l5-2.5-5-2.5Z"
++              fill="currentColor"
++            />
++          </svg>
++          <span class="nav__label">Rolls</span>
++        </button>
++
++        <button class="nav__item" type="button" data-page="friends">
++          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true">
++            <path
++              d="M7.5 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm9 1a3.5 3.5 0 1 0-3.5-3.5A3.5 3.5 0 0 0 16.5 13ZM2.5 21a6 6 0 0 1 10.9-3.4 7.9 7.9 0 0 0-1.1 3.4H2.5Zm12.3 0a6 6 0 0 1 9.2-4.9V21h-9.2Z"
++              fill="currentColor"
++            />
++          </svg>
++          <span class="nav__label">Friends</span>
++        </button>
++
++        <button class="nav__item" type="button" data-page="groups">
++          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true">
++            <path
++              d="M6 7a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm12 0a3 3 0 1 1 0 6 3 3 0 0 1 0-6ZM2 21a6 6 0 0 1 8.7-5.4A6 6 0 0 1 22 21H2Z"
++              fill="currentColor"
++            />
++          </svg>
++          <span class="nav__label">Groups</span>
++        </button>
++
++        <button class="nav__item" type="button" data-page="notifications">
++          <span class="nav__badge" data-badge>3</span>
++          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true">
++            <path
++              d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5-6.7V3a2 2 0 1 0-4 0v1.3A7 7 0 0 0 5 11v5l-2 2v1h20v-1l-2-2Z"
++              fill="currentColor"
++            />
++          </svg>
++          <span class="nav__label">Notif</span>
++        </button>
++
++        <button class="nav__item" type="button" data-page="profile">
++          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true">
++            <path
++              d="M12 12a4.3 4.3 0 1 0-4.3-4.3A4.3 4.3 0 0 0 12 12Zm0 2.2c-4.2 0-7.7 2.4-7.7 5.4V21h15.4v-1.4c0-3-3.5-5.4-7.7-5.4Z"
++              fill="currentColor"
++            />
++          </svg>
++          <span class="nav__label">Profile</span>
++        </button>
++      </nav>
++
++      <div class="topbar__right">
++        <button class="me" type="button" data-page="profile" aria-label="Open profile">
++          <img class="me__avatar" src="assets/avatar.svg" alt="" />
++          <span class="me__name">Iminski Damian</span>
++        </button>
++      </div>
++    </header>
++
++    <main class="layout">
++      <aside class="sidebar sidebar--left" aria-label="Shortcuts">
++        <div class="card card--pad">
++          <h2 class="card__title">Shortcuts</h2>
++          <div class="mini-list">
++            <button class="mini" type="button" data-page="home">
++              <span class="mini__dot mini__dot--a" aria-hidden="true"></span>
++              <span>Feed</span>
++            </button>
++            <button class="mini" type="button" data-page="rolls">
++              <span class="mini__dot mini__dot--b" aria-hidden="true"></span>
++              <span>Rolls</span>
++            </button>
++            <button class="mini" type="button" data-page="friends">
++              <span class="mini__dot mini__dot--c" aria-hidden="true"></span>
++              <span>Friends</span>
++            </button>
++            <button class="mini" type="button" data-page="groups">
++              <span class="mini__dot mini__dot--d" aria-hidden="true"></span>
++              <span>Groups</span>
++            </button>
++          </div>
++          <p class="hint">This is a fake demo UI (no real accounts, no login).</p>
++        </div>
++      </aside>
++
++      <section class="content" aria-label="Content">
++        <!-- HOME -->
++        <section class="page is-active" data-page="home" aria-label="Home">
++          <article class="card card--pad composer">
++            <div class="composer__row">
++              <img class="avatar" src="assets/avatar.svg" alt="" />
++              <input
++                class="composer__input"
++                type="text"
++                placeholder="What's on your mind, Iminski?"
++                aria-label="Create a post"
++              />
++            </div>
++            <div class="composer__actions">
++              <button class="pill pill--a" type="button">Live</button>
++              <button class="pill pill--b" type="button">Photo</button>
++              <button class="pill pill--c" type="button">Feeling</button>
++            </div>
++          </article>
++
++          <article class="card">
++            <header class="post__top">
++              <div class="post__who">
++                <img class="avatar" src="assets/avatar.svg" alt="" />
++                <div>
++                  <div class="post__name">Iminski Damian</div>
++                  <div class="post__meta">Just now · FakeBook City</div>
++                </div>
++              </div>
++              <button class="iconbtn" type="button" aria-label="More">
++                <span aria-hidden="true">...</span>
++              </button>
++            </header>
++            <p class="post__text">
++              Building a FakeBook UI with HTML/CSS/JS. Totally fake, totally fun.
++            </p>
++            <div class="post__media" aria-hidden="true">
++              <div class="media__shine"></div>
++              <div class="media__badge">demo cover</div>
++            </div>
++            <footer class="post__actions">
++              <button class="action js-like" type="button" aria-pressed="false" data-count="12">
++                <span class="action__icon" aria-hidden="true">❤</span>
++                <span class="action__label">Like</span>
++                <span class="action__count" aria-hidden="true">12</span>
++              </button>
++              <button class="action" type="button">
++                <span class="action__icon" aria-hidden="true">💬</span>
++                <span class="action__label">Comment</span>
++              </button>
++              <button class="action" type="button">
++                <span class="action__icon" aria-hidden="true">↗</span>
++                <span class="action__label">Share</span>
++              </button>
++            </footer>
++          </article>
++
++          <article class="card card--pad">
++            <h2 class="card__title">Suggested for you</h2>
++            <div class="grid">
++              <div class="tile">
++                <div class="tile__img tile__img--a" aria-hidden="true"></div>
++                <div class="tile__body">
++                  <div class="tile__title">UI Tricks</div>
++                  <div class="tile__meta">Group suggestion</div>
++                </div>
++              </div>
++              <div class="tile">
++                <div class="tile__img tile__img--b" aria-hidden="true"></div>
++                <div class="tile__body">
++                  <div class="tile__title">CSS Wizards</div>
++                  <div class="tile__meta">3 mutual friends</div>
++                </div>
++              </div>
++            </div>
++          </article>
++        </section>
++
++        <!-- ROLLS -->
++        <section class="page" data-page="rolls" aria-label="Rolls">
++          <article class="card card--pad">
++            <h2 class="card__title">Rolls (Short Videos)</h2>
++            <p class="card__sub">Fake previews with hover animations.</p>
++            <div class="reels">
++              <button class="reel reel--a" type="button">
++                <span class="reel__play" aria-hidden="true">▶</span>
++                <span class="reel__title">Night City</span>
++              </button>
++              <button class="reel reel--b" type="button">
++                <span class="reel__play" aria-hidden="true">▶</span>
++                <span class="reel__title">Coffee Loop</span>
++              </button>
++              <button class="reel reel--c" type="button">
++                <span class="reel__play" aria-hidden="true">▶</span>
++                <span class="reel__title">Beach Wind</span>
++              </button>
++              <button class="reel reel--d" type="button">
++                <span class="reel__play" aria-hidden="true">▶</span>
++                <span class="reel__title">Code Glow</span>
++              </button>
++            </div>
++          </article>
++        </section>
++
++        <!-- FRIENDS -->
++        <section class="page" data-page="friends" aria-label="Friends">
++          <article class="card card--pad">
++            <h2 class="card__title">Friend Requests</h2>
++            <div class="list">
++              <div class="row">
++                <div class="row__left">
++                  <div class="chip-avatar chip-avatar--a" aria-hidden="true">AJ</div>
++                  <div>
++                    <div class="row__title">Ava J.</div>
++                    <div class="row__meta">2 mutual friends</div>
++                  </div>
++                </div>
++                <div class="row__right">
++                  <button class="btn btn--primary js-accept" type="button">Confirm</button>
++                  <button class="btn btn--soft" type="button">Delete</button>
++                </div>
++              </div>
++              <div class="row">
++                <div class="row__left">
++                  <div class="chip-avatar chip-avatar--b" aria-hidden="true">MP</div>
++                  <div>
++                    <div class="row__title">Maks P.</div>
++                    <div class="row__meta">5 mutual friends</div>
++                  </div>
++                </div>
++                <div class="row__right">
++                  <button class="btn btn--primary js-accept" type="button">Confirm</button>
++                  <button class="btn btn--soft" type="button">Delete</button>
++                </div>
++              </div>
++            </div>
++          </article>
++        </section>
++
++        <!-- GROUPS -->
++        <section class="page" data-page="groups" aria-label="Groups">
++          <article class="card card--pad">
++            <h2 class="card__title">Groups</h2>
++            <p class="card__sub">Fake groups with join buttons.</p>
++            <div class="grid">
++              <div class="tile">
++                <div class="tile__img tile__img--c" aria-hidden="true"></div>
++                <div class="tile__body">
++                  <div class="tile__title">Frontend Lab</div>
++                  <div class="tile__meta">112k members</div>
++                  <button class="btn btn--primary js-join" type="button">Join</button>
++                </div>
++              </div>
++              <div class="tile">
++                <div class="tile__img tile__img--d" aria-hidden="true"></div>
++                <div class="tile__body">
++                  <div class="tile__title">Meme Mechanics</div>
++                  <div class="tile__meta">38k members</div>
++                  <button class="btn btn--primary js-join" type="button">Join</button>
++                </div>
++              </div>
++            </div>
++          </article>
++        </section>
++
++        <!-- NOTIFICATIONS -->
++        <section class="page" data-page="notifications" aria-label="Notifications">
++          <article class="card card--pad">
++            <h2 class="card__title">Notifications</h2>
++            <div class="notif">
++              <div class="notif__item">
++                <div class="notif__dot" aria-hidden="true"></div>
++                <div>
++                  <div class="notif__text"><strong>Frontend Lab</strong> accepted your join request.</div>
++                  <div class="notif__meta">1m</div>
++                </div>
++              </div>
++              <div class="notif__item">
++                <div class="notif__dot" aria-hidden="true"></div>
++                <div>
++                  <div class="notif__text"><strong>Ava J.</strong> liked your post.</div>
++                  <div class="notif__meta">5m</div>
++                </div>
++              </div>
++              <div class="notif__item">
++                <div class="notif__dot" aria-hidden="true"></div>
++                <div>
++                  <div class="notif__text">New rolls are trending in <strong>CSS Wizards</strong>.</div>
++                  <div class="notif__meta">12m</div>
++                </div>
++              </div>
++            </div>
++          </article>
++        </section>
++
++        <!-- PROFILE -->
++        <section class="page" data-page="profile" aria-label="Profile">
++          <article class="card profile">
++            <div class="cover">
++              <img class="cover__img" src="assets/cover.svg" alt="" />
++              <div class="cover__name">Background: aurora-garden.svg</div>
++
++              <div class="profileMeta" aria-label="Profile header">
++                <img class="profileMeta__avatar" src="assets/avatar.svg" alt="Profile photo" />
++                <div class="profileMeta__text">
++                  <div class="profileMeta__name">Iminski Damian</div>
++                  <div class="profileMeta__tag">Fake profile for learning UI</div>
++                </div>
++              </div>
++            </div>
++
++            <div class="profileBody">
++              <div class="profileCols">
++                <div class="card card--pad">
++                  <h2 class="card__title">Intro</h2>
++                  <ul class="facts">
++                    <li>Learning: HTML, CSS, JavaScript</li>
++                    <li>Lives in: FakeBook City</li>
++                    <li>Status: Building cool stuff</li>
++                  </ul>
++                </div>
++
++                <div class="card card--pad">
++                  <h2 class="card__title">Posts</h2>
++                  <p class="card__sub">A profile card with a post preview.</p>
++                  <div class="postMini">
++                    <div class="postMini__top">
++                      <img class="avatar" src="assets/avatar.svg" alt="" />
++                      <div>
++                        <div class="post__name">Iminski Damian</div>
++                        <div class="post__meta">Yesterday · FakeBook</div>
++                      </div>
++                    </div>
++                    <p class="post__text">
++                      Cover photo + profile photo overlap = done. Next: add real data!
++                    </p>
++                    <div class="post__actions">
++                      <button class="action js-like" type="button" aria-pressed="false" data-count="4">
++                        <span class="action__icon" aria-hidden="true">❤</span>
++                        <span class="action__label">Like</span>
++                        <span class="action__count" aria-hidden="true">4</span>
++                      </button>
++                      <button class="action" type="button">
++                        <span class="action__icon" aria-hidden="true">💬</span>
++                        <span class="action__label">Comment</span>
++                      </button>
++                    </div>
++                  </div>
++                </div>
++              </div>
++            </div>
++          </article>
++        </section>
++      </section>
++
++      <aside class="sidebar sidebar--right" aria-label="Right sidebar">
++        <div class="card card--pad">
++          <h2 class="card__title">Contacts</h2>
++          <div class="contacts">
++            <div class="contact">
++              <span class="status status--on" aria-hidden="true"></span>
++              <span class="contact__name">Ava J.</span>
++            </div>
++            <div class="contact">
++              <span class="status status--off" aria-hidden="true"></span>
++              <span class="contact__name">Maks P.</span>
++            </div>
++            <div class="contact">
++              <span class="status status--on" aria-hidden="true"></span>
++              <span class="contact__name">CSS Wizards</span>
++            </div>
++          </div>
++        </div>
++      </aside>
++    </main>
++
++    <footer class="footer">
++      FakeBook is a parody/demo UI only. Not affiliated with Facebook/Meta.
++    </footer>
++  </body>
++</html>
++

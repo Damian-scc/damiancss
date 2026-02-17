@@ -1,0 +1,909 @@
+diff --git a//Users/i.damian/Desktop/moj-projekt/fakebook/style.css b//Users/i.damian/Desktop/moj-projekt/fakebook/style.css
+new file mode 100644
+--- /dev/null
++++ b//Users/i.damian/Desktop/moj-projekt/fakebook/style.css
+@@ -0,0 +1,904 @@
++:root {
++  --bg0: #f6f7fb;
++  --bg1: #eef2fb;
++  --ink: #13212b;
++  --muted: rgba(19, 33, 43, 0.72);
++
++  --card: rgba(255, 255, 255, 0.86);
++  --card-border: rgba(19, 33, 43, 0.12);
++  --shadow: 0 22px 55px rgba(10, 20, 30, 0.16);
++
++  --brand0: #00b3a4;
++  --brand1: #ffb347;
++  --danger: #ff3d5a;
++
++  --radius: 18px;
++}
++
++*,
++*::before,
++*::after {
++  box-sizing: border-box;
++}
++
++html,
++body {
++  height: 100%;
++}
++
++body {
++  margin: 0;
++  color: var(--ink);
++  background:
++    radial-gradient(900px 520px at 18% 10%, rgba(0, 179, 164, 0.14), transparent 60%),
++    radial-gradient(900px 520px at 82% 18%, rgba(255, 179, 71, 0.16), transparent 65%),
++    linear-gradient(180deg, var(--bg0), var(--bg1));
++  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
++}
++
++/* ---------------- */
++/* Top Navigation   */
++/* ---------------- */
++
++.topbar {
++  position: sticky;
++  top: 0;
++  z-index: 20;
++  display: grid;
++  grid-template-columns: auto 1fr auto;
++  gap: 16px;
++  align-items: center;
++  padding: 12px 14px;
++  border-bottom: 1px solid rgba(19, 33, 43, 0.08);
++  background: rgba(255, 255, 255, 0.75);
++  backdrop-filter: blur(12px);
++}
++
++.logo {
++  display: inline-flex;
++  align-items: center;
++  gap: 10px;
++  text-decoration: none;
++  color: var(--ink);
++  font-weight: 800;
++  letter-spacing: 0.3px;
++}
++
++.logo__mark {
++  width: 34px;
++  height: 34px;
++  display: grid;
++  place-items: center;
++  border-radius: 12px;
++  color: #06110f;
++  background: linear-gradient(135deg, var(--brand0), rgba(255, 179, 71, 0.9));
++  box-shadow: 0 14px 25px rgba(0, 179, 164, 0.18);
++}
++
++.nav {
++  display: flex;
++  justify-content: center;
++  gap: 10px;
++  align-items: center;
++}
++
++.nav__item {
++  position: relative;
++  display: inline-flex;
++  align-items: center;
++  gap: 10px;
++  border: 1px solid transparent;
++  background: transparent;
++  color: rgba(19, 33, 43, 0.9);
++  padding: 10px 12px;
++  border-radius: 14px;
++  cursor: pointer;
++  transition:
++    transform 160ms ease,
++    background 160ms ease,
++    border-color 160ms ease;
++}
++
++.nav__item:hover {
++  background: rgba(19, 33, 43, 0.06);
++  transform: translateY(-1px);
++}
++
++.nav__item.is-active {
++  background: rgba(0, 179, 164, 0.1);
++  border-color: rgba(0, 179, 164, 0.22);
++}
++
++.nav__item.is-active::after {
++  content: "";
++  position: absolute;
++  left: 12px;
++  right: 12px;
++  bottom: -11px;
++  height: 3px;
++  border-radius: 999px;
++  background: linear-gradient(90deg, var(--brand0), var(--brand1));
++}
++
++.nav__icon {
++  width: 18px;
++  height: 18px;
++}
++
++.nav__label {
++  font-weight: 700;
++  letter-spacing: 0.2px;
++  font-size: 13px;
++}
++
++.nav__badge {
++  position: absolute;
++  top: 3px;
++  left: 8px;
++  min-width: 18px;
++  height: 18px;
++  padding: 0 6px;
++  border-radius: 999px;
++  display: grid;
++  place-items: center;
++  font-size: 12px;
++  font-weight: 800;
++  color: white;
++  background: var(--danger);
++  box-shadow: 0 10px 20px rgba(255, 61, 90, 0.22);
++}
++
++.topbar__right {
++  display: flex;
++  justify-content: end;
++}
++
++.me {
++  display: inline-flex;
++  align-items: center;
++  gap: 10px;
++  padding: 8px 10px;
++  border-radius: 999px;
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  background: rgba(255, 255, 255, 0.7);
++  cursor: pointer;
++  transition: transform 160ms ease, background 160ms ease;
++}
++
++.me:hover {
++  transform: translateY(-1px);
++  background: rgba(255, 255, 255, 0.9);
++}
++
++.me__avatar {
++  width: 30px;
++  height: 30px;
++  border-radius: 999px;
++  border: 2px solid rgba(19, 33, 43, 0.12);
++}
++
++.me__name {
++  font-weight: 800;
++  font-size: 13px;
++}
++
++/* ---------------- */
++/* Layout / Cards   */
++/* ---------------- */
++
++.layout {
++  width: min(1160px, 96vw);
++  margin: 0 auto;
++  padding: 16px 0 30px;
++  display: grid;
++  grid-template-columns: 250px minmax(0, 1fr) 250px;
++  gap: 16px;
++}
++
++.content {
++  display: grid;
++  align-content: start;
++  gap: 14px;
++}
++
++.sidebar {
++  display: grid;
++  align-content: start;
++  gap: 14px;
++}
++
++.card {
++  border-radius: var(--radius);
++  background: var(--card);
++  border: 1px solid var(--card-border);
++  box-shadow: var(--shadow);
++  overflow: hidden;
++}
++
++.card--pad {
++  padding: 14px;
++}
++
++.card__title {
++  margin: 0 0 10px;
++  font-size: 16px;
++  letter-spacing: 0.2px;
++}
++
++.card__sub {
++  margin: -4px 0 14px;
++  color: var(--muted);
++}
++
++.hint {
++  margin: 12px 0 0;
++  color: var(--muted);
++  font-size: 13px;
++  line-height: 1.35;
++}
++
++/* ---------------- */
++/* Mini Sidebar     */
++/* ---------------- */
++
++.mini-list {
++  display: grid;
++  gap: 10px;
++}
++
++.mini {
++  display: flex;
++  align-items: center;
++  gap: 10px;
++  padding: 10px 10px;
++  border-radius: 14px;
++  border: 1px solid rgba(19, 33, 43, 0.1);
++  background: rgba(255, 255, 255, 0.75);
++  cursor: pointer;
++  font-weight: 700;
++  transition: transform 160ms ease, background 160ms ease;
++}
++
++.mini:hover {
++  transform: translateY(-1px);
++  background: rgba(255, 255, 255, 0.95);
++}
++
++.mini__dot {
++  width: 12px;
++  height: 12px;
++  border-radius: 999px;
++}
++
++.mini__dot--a { background: linear-gradient(135deg, var(--brand0), rgba(0, 179, 164, 0.25)); }
++.mini__dot--b { background: linear-gradient(135deg, var(--brand1), rgba(255, 179, 71, 0.25)); }
++.mini__dot--c { background: linear-gradient(135deg, #6c5ce7, rgba(108, 92, 231, 0.25)); }
++.mini__dot--d { background: linear-gradient(135deg, #ff6b6b, rgba(255, 107, 107, 0.25)); }
++
++/* ---------------- */
++/* Pages            */
++/* ---------------- */
++
++.page {
++  display: none;
++  gap: 14px;
++}
++
++.page.is-active {
++  display: grid;
++}
++
++/* ---------------- */
++/* Composer / Post  */
++/* ---------------- */
++
++.avatar {
++  width: 40px;
++  height: 40px;
++  border-radius: 999px;
++  border: 2px solid rgba(19, 33, 43, 0.12);
++}
++
++.composer {
++  display: grid;
++  gap: 12px;
++}
++
++.composer__row {
++  display: grid;
++  grid-template-columns: auto 1fr;
++  gap: 10px;
++  align-items: center;
++}
++
++.composer__input {
++  width: 100%;
++  padding: 12px 14px;
++  border-radius: 999px;
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  background: rgba(255, 255, 255, 0.8);
++  outline: none;
++  font-size: 14px;
++}
++
++.composer__input:focus-visible {
++  border-color: rgba(0, 179, 164, 0.35);
++  box-shadow: 0 0 0 5px rgba(0, 179, 164, 0.14);
++}
++
++.composer__actions {
++  display: flex;
++  gap: 10px;
++  flex-wrap: wrap;
++}
++
++.pill {
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  background: rgba(255, 255, 255, 0.7);
++  border-radius: 999px;
++  padding: 8px 12px;
++  font-weight: 800;
++  cursor: pointer;
++  transition: transform 160ms ease, filter 160ms ease;
++}
++
++.pill:hover {
++  transform: translateY(-1px);
++  filter: brightness(1.02);
++}
++
++.pill--a { box-shadow: 0 14px 30px rgba(255, 61, 90, 0.12); }
++.pill--b { box-shadow: 0 14px 30px rgba(255, 179, 71, 0.12); }
++.pill--c { box-shadow: 0 14px 30px rgba(0, 179, 164, 0.12); }
++
++.post__top {
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  gap: 10px;
++  padding: 14px 14px 10px;
++}
++
++.post__who {
++  display: flex;
++  align-items: center;
++  gap: 10px;
++}
++
++.post__name {
++  font-weight: 900;
++}
++
++.post__meta {
++  color: var(--muted);
++  font-size: 13px;
++  margin-top: 2px;
++}
++
++.post__text {
++  margin: 0;
++  padding: 0 14px 12px;
++  line-height: 1.4;
++}
++
++.iconbtn {
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  background: rgba(255, 255, 255, 0.75);
++  border-radius: 999px;
++  padding: 8px 10px;
++  cursor: pointer;
++}
++
++.post__media {
++  position: relative;
++  height: 180px;
++  margin: 0 14px 12px;
++  border-radius: 16px;
++  overflow: hidden;
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  background:
++    radial-gradient(900px 260px at 20% 0%, rgba(0, 179, 164, 0.26), transparent 55%),
++    radial-gradient(900px 260px at 80% 100%, rgba(255, 179, 71, 0.24), transparent 60%),
++    linear-gradient(135deg, rgba(19, 33, 43, 0.06), rgba(19, 33, 43, 0.02));
++}
++
++.media__shine {
++  position: absolute;
++  inset: 0;
++  background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.35) 45%, transparent 70%);
++  transform: translateX(-130%);
++  animation: shine 4.8s ease-in-out infinite;
++  opacity: 0.7;
++}
++
++.media__badge {
++  position: absolute;
++  bottom: 10px;
++  right: 10px;
++  padding: 8px 10px;
++  border-radius: 999px;
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  background: rgba(255, 255, 255, 0.8);
++  font-weight: 900;
++  font-size: 12px;
++}
++
++.post__actions {
++  display: flex;
++  gap: 10px;
++  padding: 0 14px 14px;
++  flex-wrap: wrap;
++}
++
++.action {
++  display: inline-flex;
++  align-items: center;
++  gap: 10px;
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  background: rgba(255, 255, 255, 0.76);
++  border-radius: 999px;
++  padding: 9px 12px;
++  font-weight: 900;
++  cursor: pointer;
++  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
++}
++
++.action:hover {
++  transform: translateY(-1px);
++  background: rgba(255, 255, 255, 0.95);
++}
++
++.action[aria-pressed="true"] {
++  border-color: rgba(255, 61, 90, 0.35);
++  background: rgba(255, 61, 90, 0.08);
++}
++
++.action__icon {
++  width: 18px;
++  height: 18px;
++  display: inline-grid;
++  place-items: center;
++}
++
++.action__count {
++  color: var(--muted);
++  font-weight: 900;
++}
++
++/* ---------------- */
++/* Rolls Grid       */
++/* ---------------- */
++
++.reels {
++  display: grid;
++  grid-template-columns: repeat(4, minmax(0, 1fr));
++  gap: 12px;
++}
++
++.reel {
++  position: relative;
++  height: 220px;
++  border-radius: 18px;
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  background: linear-gradient(135deg, rgba(0, 179, 164, 0.18), rgba(255, 179, 71, 0.14));
++  cursor: pointer;
++  overflow: hidden;
++  transition: transform 180ms ease, filter 180ms ease;
++}
++
++.reel::after {
++  content: "";
++  position: absolute;
++  inset: -1px;
++  background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.32) 40%, transparent 70%);
++  transform: translateX(-140%);
++  opacity: 0;
++}
++
++.reel:hover {
++  transform: translateY(-2px) rotate(-0.2deg);
++  filter: saturate(1.06);
++}
++
++.reel:hover::after {
++  opacity: 1;
++  animation: sweep 700ms ease-out;
++}
++
++.reel__play {
++  position: absolute;
++  left: 12px;
++  top: 12px;
++  width: 40px;
++  height: 40px;
++  border-radius: 999px;
++  display: grid;
++  place-items: center;
++  font-weight: 900;
++  color: white;
++  background: rgba(19, 33, 43, 0.75);
++  border: 1px solid rgba(255, 255, 255, 0.18);
++}
++
++.reel__title {
++  position: absolute;
++  left: 12px;
++  bottom: 12px;
++  right: 12px;
++  color: white;
++  font-weight: 900;
++  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
++}
++
++.reel--a { background: linear-gradient(135deg, rgba(15, 76, 129, 0.35), rgba(0, 179, 164, 0.18)); }
++.reel--b { background: linear-gradient(135deg, rgba(255, 179, 71, 0.28), rgba(255, 61, 90, 0.16)); }
++.reel--c { background: linear-gradient(135deg, rgba(0, 179, 164, 0.26), rgba(83, 109, 254, 0.18)); }
++.reel--d { background: linear-gradient(135deg, rgba(19, 33, 43, 0.12), rgba(0, 179, 164, 0.22)); }
++
++/* ---------------- */
++/* Lists / Buttons   */
++/* ---------------- */
++
++.grid {
++  display: grid;
++  grid-template-columns: repeat(2, minmax(0, 1fr));
++  gap: 12px;
++}
++
++.tile {
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  border-radius: 18px;
++  overflow: hidden;
++  background: rgba(255, 255, 255, 0.7);
++  display: grid;
++  grid-template-columns: 84px 1fr;
++  align-items: stretch;
++}
++
++.tile__img {
++  background: linear-gradient(135deg, rgba(0, 179, 164, 0.22), rgba(255, 179, 71, 0.16));
++}
++
++.tile__img--a { background: linear-gradient(135deg, rgba(255, 61, 90, 0.18), rgba(255, 179, 71, 0.18)); }
++.tile__img--b { background: linear-gradient(135deg, rgba(0, 179, 164, 0.2), rgba(83, 109, 254, 0.16)); }
++.tile__img--c { background: linear-gradient(135deg, rgba(255, 179, 71, 0.2), rgba(0, 179, 164, 0.18)); }
++.tile__img--d { background: linear-gradient(135deg, rgba(19, 33, 43, 0.1), rgba(255, 61, 90, 0.16)); }
++
++.tile__body {
++  padding: 12px;
++  display: grid;
++  gap: 8px;
++}
++
++.tile__title {
++  font-weight: 900;
++}
++
++.tile__meta {
++  color: var(--muted);
++  font-size: 13px;
++}
++
++.list {
++  display: grid;
++  gap: 12px;
++}
++
++.row {
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  gap: 12px;
++  padding: 12px;
++  border-radius: 18px;
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  background: rgba(255, 255, 255, 0.7);
++}
++
++.row__left {
++  display: flex;
++  align-items: center;
++  gap: 12px;
++}
++
++.row__title {
++  font-weight: 900;
++}
++
++.row__meta {
++  color: var(--muted);
++  font-size: 13px;
++  margin-top: 2px;
++}
++
++.row__right {
++  display: flex;
++  gap: 10px;
++}
++
++.chip-avatar {
++  width: 44px;
++  height: 44px;
++  border-radius: 999px;
++  display: grid;
++  place-items: center;
++  font-weight: 900;
++  color: white;
++  border: 2px solid rgba(19, 33, 43, 0.12);
++}
++
++.chip-avatar--a { background: linear-gradient(135deg, rgba(0, 179, 164, 0.9), rgba(255, 179, 71, 0.9)); }
++.chip-avatar--b { background: linear-gradient(135deg, rgba(255, 61, 90, 0.85), rgba(83, 109, 254, 0.85)); }
++
++.btn {
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  border-radius: 999px;
++  padding: 9px 12px;
++  font-weight: 900;
++  cursor: pointer;
++  transition: transform 160ms ease, filter 160ms ease, background 160ms ease;
++}
++
++.btn:hover {
++  transform: translateY(-1px);
++  filter: brightness(1.02);
++}
++
++.btn:active {
++  transform: translateY(0px) scale(0.98);
++}
++
++.btn--primary {
++  color: #07110f;
++  background: linear-gradient(135deg, var(--brand0), var(--brand1));
++  box-shadow: 0 16px 32px rgba(0, 179, 164, 0.18);
++}
++
++.btn--soft {
++  background: rgba(255, 255, 255, 0.7);
++}
++
++/* ---------------- */
++/* Notifications     */
++/* ---------------- */
++
++.notif {
++  display: grid;
++  gap: 12px;
++}
++
++.notif__item {
++  display: grid;
++  grid-template-columns: auto 1fr;
++  gap: 12px;
++  align-items: start;
++  padding: 12px;
++  border-radius: 18px;
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  background: rgba(255, 255, 255, 0.7);
++}
++
++.notif__dot {
++  width: 12px;
++  height: 12px;
++  margin-top: 5px;
++  border-radius: 999px;
++  background: var(--danger);
++  box-shadow: 0 10px 20px rgba(255, 61, 90, 0.18);
++}
++
++.notif__text {
++  line-height: 1.35;
++}
++
++.notif__meta {
++  color: var(--muted);
++  font-size: 13px;
++  margin-top: 4px;
++}
++
++/* ---------------- */
++/* Profile           */
++/* ---------------- */
++
++.profile {
++  overflow: visible;
++}
++
++.cover {
++  position: relative;
++  height: 260px;
++}
++
++.cover__img {
++  width: 100%;
++  height: 100%;
++  display: block;
++  object-fit: cover;
++}
++
++.cover__name {
++  position: absolute;
++  top: 12px;
++  right: 12px;
++  padding: 9px 12px;
++  border-radius: 999px;
++  background: rgba(255, 255, 255, 0.85);
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  font-weight: 900;
++  font-size: 12px;
++}
++
++.profileMeta {
++  position: absolute;
++  left: 50%;
++  bottom: 0;
++  transform: translate(-50%, 50%);
++  display: grid;
++  grid-template-columns: auto 1fr;
++  gap: 14px;
++  align-items: center;
++  padding: 12px 14px;
++  width: min(700px, calc(100% - 24px));
++  border-radius: 22px;
++  background: rgba(255, 255, 255, 0.9);
++  border: 1px solid rgba(19, 33, 43, 0.12);
++  box-shadow: 0 24px 60px rgba(10, 20, 30, 0.18);
++  backdrop-filter: blur(10px);
++}
++
++.profileMeta__avatar {
++  width: 92px;
++  height: 92px;
++  border-radius: 999px;
++  border: 4px solid rgba(255, 255, 255, 0.95);
++  box-shadow: 0 18px 35px rgba(10, 20, 30, 0.18);
++}
++
++.profileMeta__name {
++  font-size: 22px;
++  font-weight: 950;
++  letter-spacing: 0.2px;
++}
++
++.profileMeta__tag {
++  margin-top: 4px;
++  color: var(--muted);
++  font-weight: 800;
++}
++
++.profileBody {
++  padding: 84px 14px 14px; /* space for the overlapping profileMeta */
++  display: grid;
++  gap: 14px;
++}
++
++.profileCols {
++  display: grid;
++  grid-template-columns: 340px minmax(0, 1fr);
++  gap: 14px;
++  align-items: start;
++}
++
++.facts {
++  margin: 0;
++  padding-left: 18px;
++  color: rgba(19, 33, 43, 0.88);
++  line-height: 1.45;
++}
++
++.postMini__top {
++  display: flex;
++  gap: 10px;
++  align-items: center;
++  margin-bottom: 8px;
++}
++
++/* ---------------- */
++/* Right Sidebar     */
++/* ---------------- */
++
++.contacts {
++  display: grid;
++  gap: 10px;
++}
++
++.contact {
++  display: flex;
++  align-items: center;
++  gap: 10px;
++  padding: 10px 10px;
++  border-radius: 14px;
++  border: 1px solid rgba(19, 33, 43, 0.1);
++  background: rgba(255, 255, 255, 0.7);
++}
++
++.status {
++  width: 10px;
++  height: 10px;
++  border-radius: 999px;
++}
++
++.status--on { background: rgba(0, 179, 164, 0.95); }
++.status--off { background: rgba(19, 33, 43, 0.32); }
++
++.contact__name {
++  font-weight: 900;
++}
++
++.footer {
++  width: min(1160px, 96vw);
++  margin: 0 auto 24px;
++  color: var(--muted);
++  font-size: 13px;
++}
++
++/* ---------------- */
++/* Animations        */
++/* ---------------- */
++
++@keyframes sweep {
++  from { transform: translateX(-140%); }
++  to { transform: translateX(140%); }
++}
++
++@keyframes shine {
++  0% { transform: translateX(-130%); }
++  45% { transform: translateX(130%); }
++  100% { transform: translateX(130%); }
++}
++
++@media (prefers-reduced-motion: reduce) {
++  .media__shine {
++    animation: none;
++    transform: none;
++  }
++}
++
++/* ---------------- */
++/* Responsive        */
++/* ---------------- */
++
++@media (max-width: 980px) {
++  .layout {
++    grid-template-columns: 1fr;
++  }
++
++  .sidebar {
++    order: 2;
++  }
++
++  .sidebar--right {
++    order: 3;
++  }
++
++  .profileCols {
++    grid-template-columns: 1fr;
++  }
++
++  .reels {
++    grid-template-columns: repeat(2, minmax(0, 1fr));
++  }
++}
++
++@media (max-width: 560px) {
++  .topbar {
++    grid-template-columns: 1fr;
++    gap: 10px;
++  }
++
++  .nav {
++    justify-content: start;
++    overflow: auto;
++    padding-bottom: 4px;
++  }
++
++  .nav__item.is-active::after {
++    display: none;
++  }
++
++  .reels {
++    grid-template-columns: 1fr;
++  }
++}
++

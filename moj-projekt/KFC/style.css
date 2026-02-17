@@ -1,0 +1,127 @@
+* { 
+    margin: 0 auto;
+    padding: 0 Auto;
+    box-sizing: border-box;
+}
+
+body { 
+    width: 1440px;
+    align-items: center;
+    margin: auto;
+
+
+}
+
+nav{
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+display: flex;
+}
+
+.menu li {
+    margin-right: 20px;
+    list-style: none;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: black;
+}
+
+.menu li button {
+    border: none;
+    background-color: red;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.menu li button:hover {
+    background-color: darkred;
+    text-transform: uppercase;
+}
+.container {
+    margin-right: 20px;
+    font-size: 20px;
+    width: inherit;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.slider { 
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.slider img { 
+    max-width: 600px; /* żeby obraz nie był za duży */
+    width: 100%;
+    height: auto;
+}
+
+.slider input { 
+    position: absolute;
+    top: 50%;     /* środek w pionie */
+    left: 50%;    /* środek w poziomie */
+    transform: translate(-50%, -50%); /* dokładne wyśrodkowanie */
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+/* Stylizacja listy napojów */
+.drink-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.drink-card:hover { /*efekt po najechaniu */
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px gray
+}
+
+.drink-card img { /* obrazek napoju */
+    width: 80px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.drink-info { /* informacje o napoju */
+    flex: 1;
+    text-align: left;
+}
+
+.drink-info h3 { /* kolor i wielkość nazwy napoju */
+    margin: 0;
+    font-size: 20px;
+    color: #222;
+}
+
+.drink-info p { /* kolor i wielkość opisu napoju */
+    margin: 5px 0;
+    color: #666;
+}
+
+.price { /* kolor i styl ceny */
+    font-weight: bold;
+    color: #d32f2f;
+    font-size: 18px;
+}

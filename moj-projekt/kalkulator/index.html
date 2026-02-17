@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pole trójkąta</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            width: 80px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #wynik {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7f3fe;
+            border-left: 4px solid #2196F3;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Oblicz pole trójkąta</h1>
+
+    <p>Podaj długości boków:</p>
+
+    <input type="number" id="a" placeholder="a">
+    <input type="number" id="b" placeholder="b">
+    <input type="number" id="c" placeholder="c">
+    <br>
+
+    <button onclick="obliczPole()">Oblicz pole</button>
+
+    <div id="wynik">Wynik pojawi się tutaj…</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
