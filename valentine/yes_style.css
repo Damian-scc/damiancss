@@ -1,0 +1,68 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #321616;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    font-size: 2.6em;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+  }
+
+.highlight {
+    color: #ff0000;
+    
+  }
+.container.kurwa {
+    position: fixed;
+    bottom: 50px;          /* odległość od dołu */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    padding: 10px 20px;
+    background-color: #ff2e2e; /* możesz zostawić lub zrobić transparent */
+    color: white;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(255, 46, 46, 0.35);
+    animation: pulse 1.8s ease-in-out infinite;
+    z-index: 1; /* nad filmem */
+}
+
+/* animacja pulsowania */
+@keyframes pulse {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+.container.kurwa {
+    text-align: center;
+    
+}
+
+.header_text {
+    font-size: 3em;
+    color: #ff0000;
+}
+
+.gif_container img {
+    width: 100%; 
+    max-width: 300px; 
+    height: auto; 
+}
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* tu możesz ustawić, co pokazać */
+  z-index: -1;
+}
